@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-100 dark:bg-primary-900;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-300 dark:bg-primary-700 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-400 dark:bg-primary-600;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Vertical Timeline Customizations */
+.vertical-timeline::before {
+  @apply dark:bg-primary-800;
+}
+
+/* Transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* For 3D card effect */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* For typewriter cursor effect */
+.animate-pulse {
+  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(99, 102, 241, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Custom utility classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-accent-950;
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+/* Glass morphism effects */
+.glass {
+  @apply backdrop-blur-lg bg-white/10 dark:bg-primary-900/10;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Hover effects */
+.hover-lift {
+  @apply transition-transform duration-300 ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Card effects */
+.card-3d {
+  @apply transition-transform duration-300 ease-out;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateX(5deg) rotateY(5deg);
+}
+
+/* Timeline customization */
+.timeline-dot {
+  @apply w-4 h-4 rounded-full transition-all duration-300;
+}
+
+.timeline-dot.active {
+  @apply scale-125 shadow-lg;
+}
+
+/* Form input effects */
+.input-focus-effect {
+  @apply transition-all duration-300;
+  background: linear-gradient(90deg, #3B82F6 0%, #10B981 100%);
+  background-size: 0 2px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.input-focus-effect:focus {
+  background-size: 100% 2px;
+}
+
+/* Skill bar animations */
+.skill-progress {
+  @apply relative overflow-hidden;
+}
+
+.skill-progress::after {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Button effects */
+.btn-gradient {
+  @apply relative overflow-hidden transition-all duration-300;
+  background: linear-gradient(90deg, #3B82F6 0%, #10B981 100%);
+  background-size: 200% 100%;
+}
+
+.btn-gradient:hover {
+  background-position: 100% 0;
+}
+
+/* Custom cursor effects */
+.custom-cursor {
+  @apply fixed w-8 h-8 pointer-events-none mix-blend-difference z-50;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+}
+
+.custom-cursor.hover {
+  @apply w-12 h-12;
+}
+
+/* Project card hover effects */
+.project-card {
+  @apply transition-all duration-300;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Certificate card effects */
+.certificate-card {
+  @apply transition-all duration-300;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px) rotateY(5deg);
+}
+
+/* Achievement card effects */
+.achievement-card {
+  @apply transition-all duration-300;
+}
+
+.achievement-card:hover {
+  transform: scale(1.05);
+}
+
+/* Contact form effects */
+.contact-input {
+  @apply transition-all duration-300;
+}
+
+.contact-input:focus {
+  transform: scale(1.02);
+}
+
+/* Navigation effects */
+.nav-link {
+  @apply relative overflow-hidden;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+/* Dark mode transition */
+.dark-mode-transition {
+  @apply transition-colors duration-300;
+}
+
+/* Particle effects */
+.particle {
+  @apply absolute rounded-full pointer-events-none;
+  animation: float 6s infinite;
+}
+
+/* Loading animation */
+.loading-animation {
+  @apply relative overflow-hidden;
+}
+
+.loading-animation::after {
+  content: '';
+  @apply absolute top-0 left-0 w-full h-full;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.2) 50%,
+    transparent 100%
+  );
+  animation: loading 1.5s infinite;
+}
